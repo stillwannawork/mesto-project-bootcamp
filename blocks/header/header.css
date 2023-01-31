@@ -1,0 +1,23 @@
+.header {
+  max-width: 880px;
+  max-height: 74px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  row-gap: 41px;
+  padding-top: 45px;
+}
+
+@media screen and (max-width: 920px) {
+  .header {
+    max-width: 666px;
+  }
+}
+
+@media screen and (max-width: 707px) {
+  .header {
+    max-width: 320px;
+    padding-top: 28px;
+    row-gap: 32px;
+  }
+}

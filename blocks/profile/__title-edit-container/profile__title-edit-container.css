@@ -1,0 +1,11 @@
+.profile__title-edit-container {
+  display: flex;
+  column-gap: 18px;
+  align-items: center;
+}
+
+@media screen and (max-width: 707px) {
+  .profile__title-edit-container {
+    column-gap: 10px;
+  }
+}

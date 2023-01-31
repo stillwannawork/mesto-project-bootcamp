@@ -1,0 +1,8 @@
+.page {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #000;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+}
