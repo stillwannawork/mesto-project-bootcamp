@@ -1,5 +1,5 @@
 # Проект: Место
-https://stillwannawork.github.io/russian-travel-bootcamp-gh-deploy/
+https://stillwannawork.github.io/mesto-project-bootcamp-1-deploy/
 
 ### Тема проекта
 Данный проект - это интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.
