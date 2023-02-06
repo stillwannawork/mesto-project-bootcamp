@@ -10,86 +10,73 @@
   <div class="page">
     <header class="header">
       <div class="header__logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__avatar-info-container">
-          <div class="profile__avatar"></div>
+          <img src="./images/profile-image.svg" alt="Изображение профиля" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__title-edit-container">
-              <p class="profile__title">Жак-Ив Кусто</p>
-              <a href="#" class="profile__edit-button"></a>
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button type="button" aria-label="Изменить профиль" class="profile__edit-button"></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <a href="#" class="profile__add-button"></a>
+        <button type="button" aria-label="Добваить изображение" class="profile__add-button"></и>
       </section>
       <section class="photo-grid">
-        <div class="photo-grid__item">
-          <img src="./images/karachaevsk.jpg" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/karachaevsk.jpg" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">К</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img src="./images/elbrus.png" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/elbrus.png" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">Карачаевскasdasdasdasdasd</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img src="./images/dombai.png" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/dombai.png" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">Карачаевск</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img src="./images/elbrus.png" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/elbrus.png" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">Карачаевск</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img src="./images/dombai.png" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/dombai.png" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">Карачаевск</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img src="./images/karachaevsk.jpg" alt class="photo-grid__image">
-          <div class="photo-grid__caption-holder">
-            <div class="photo-grid__caption">
-              <p class="photo-grid__text">Карачаевск</p>
-              <a href="#">
-                <div class="photo-grid__icon"></div>
-               </a>
+        <div class="grid-item">
+          <img src="./images/karachaevsk.jpg" alt="Фотография в карточке" class="grid-item__image">
+          <div class="grid-item__caption-holder">
+            <div class="grid-item__caption">
+              <h2 class="grid-item__text">Карачаевск</h2>
+              <button type="button" aria-label="Понравилось" class="grid-item__icon"></button>
             </div>
           </div>
         </div>
@@ -98,18 +85,16 @@
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
-        <a href="#">
-          <img src="./images/close-icon.svg" alt class="popup__close-button">
-        </a>
-        <p class="popup__header">Редактировать профиль</p>
-        <form class="popup__form">
+        <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+        <h3 class="popup__header">Редактировать профиль</h3>
+        <form method="get" name="edit-profile" class="popup__form">
           <div class="popup__input-container">
-            <input type="text" id="title" class="popup__title">
-            <input type="text" id="subtitle" class="popup__title">
+            <input type="text" name="title" id="title" class="popup__title">
+            <input type="text" name="subtitle" id="subtitle" class="popup__title">
           </div>
-          <button class="popup__save-button">Сохранить</button>
+          <button type="submi" aria-labelledby="Сохранить" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>

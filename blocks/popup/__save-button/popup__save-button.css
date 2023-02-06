@@ -8,6 +8,8 @@
   border: none;
   color: white;
   margin: 0 auto;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 707px) {
@@ -19,5 +21,5 @@
 }
 
 .popup__save-button:hover {
-  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.8);
 }
