@@ -1,4 +1,4 @@
-.grid-item__icon {
+.grid-item__like-icon {
   width: 22px;
   height: 19px;
   background-repeat: no-repeat;
@@ -10,11 +10,11 @@
   cursor: pointer;
 }
 
-.grid-item__icon:hover {
+.grid-item__like-icon:hover {
   opacity: 0.5;
 }
 
-.grid-item__icon:active {
+.grid-item__like-icon:active {
   color: black;
   background-image: url(../../../images/heart-black.svg);
   opacity: 1;

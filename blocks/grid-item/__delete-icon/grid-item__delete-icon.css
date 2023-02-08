@@ -1,0 +1,13 @@
+.grid-item__delete-icon {
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-image: url(../../../images/delete-icon.svg);
+  background-size: 18px 19px;
+  background-color: rgba(0, 0, 0, 0); 
+  background-repeat: no-repeat;
+  border: 0;
+  cursor: pointer;
+}

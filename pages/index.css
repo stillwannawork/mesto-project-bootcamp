@@ -15,9 +15,10 @@
 @import url(../blocks/profile/__avatar-info-container/profile__avatar-info-container.css);
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/grid-item/grid-item.css);
+@import url(../blocks/grid-item/__delete-icon/grid-item__delete-icon.css);
 @import url(../blocks/grid-item/__caption-holder/grid-item__caption-holder.css);
 @import url(../blocks/grid-item/__caption/grid-item__caption.css);
-@import url(../blocks/grid-item/__icon/grid-item__icon.css);
+@import url(../blocks/grid-item/__like-icon/grid-item__like-icon.css);
 @import url(../blocks/grid-item/__image/grid-item__image.css);
 @import url(../blocks/grid-item/__text/grid-item__text.css);
 @import url(../blocks/footer/footer.css);
