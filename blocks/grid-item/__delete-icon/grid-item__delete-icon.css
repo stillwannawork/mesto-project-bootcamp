@@ -11,3 +11,7 @@
   border: 0;
   cursor: pointer;
 }
+
+.grid-item__delete-icon:hover {
+  opacity: 0.6;
+}
