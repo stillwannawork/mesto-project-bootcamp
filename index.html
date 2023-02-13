@@ -26,7 +26,7 @@
         <button type="button" aria-label="Добваить изображение" class="profile__add-button"></и>
       </section>
       <section class="photo-grid">
-        <div class="grid-item">
+        <template class="grid-item">
           <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
           <img src="./images/karachaevsk.jpg" alt="Фотография в карточке" class="grid-item__image">
           <div class="grid-item__caption-holder">
@@ -35,75 +35,39 @@
               <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
             </div>
           </div>
-        </div>
-        <div class="grid-item">
-          <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
-          <img src="./images/elbrus.png" alt="Фотография в карточке" class="grid-item__image">
-          <div class="grid-item__caption-holder">
-            <div class="grid-item__caption">
-              <h2 class="grid-item__text">Карачаевскasdasdasdasdasd</h2>
-              <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item">
-          <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
-          <img src="./images/dombai.png" alt="Фотография в карточке" class="grid-item__image">
-          <div class="grid-item__caption-holder">
-            <div class="grid-item__caption">
-              <h2 class="grid-item__text">Карачаевск</h2>
-              <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item">
-          <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
-          <img src="./images/elbrus.png" alt="Фотография в карточке" class="grid-item__image">
-          <div class="grid-item__caption-holder">
-            <div class="grid-item__caption">
-              <h2 class="grid-item__text">Карачаевск</h2>
-              <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item">
-          <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
-          <img src="./images/dombai.png" alt="Фотография в карточке" class="grid-item__image">
-          <div class="grid-item__caption-holder">
-            <div class="grid-item__caption">
-              <h2 class="grid-item__text">Карачаевск</h2>
-              <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
-            </div>
-          </div>
-        </div>
-        <div class="grid-item">
-          <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>
-          <img src="./images/karachaevsk.jpg" alt="Фотография в карточке" class="grid-item__image">
-          <div class="grid-item__caption-holder">
-            <div class="grid-item__caption">
-              <h2 class="grid-item__text">Карачаевск</h2>
-              <button type="button" aria-label="Понравилось" class="grid-item__like-icon"></button>
-            </div>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup ">
       <div class="popup__container">
         <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
         <h3 class="popup__header">Редактировать профиль</h3>
         <form method="get" name="edit-profile" class="popup__form">
           <div class="popup__input-container">
-            <input type="text" name="title" id="title" class="popup__title">
+            <input type="text" name="name" id="name" placeholder="Жак" class="popup__title">
             <input type="text" name="subtitle" id="subtitle" class="popup__title">
           </div>
           <button type="submit" aria-labelledby="Сохранить" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>
+    <div class="popup popup_tupe_add">
+      <div class="popup__container">
+        <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+        <h3 class="popup__header">Новое место</h3>
+        <form method="get" name="edit-profile" class="popup__form">
+          <div class="popup__input-container">
+            <input type="text" name="title" id="title" placeholder="" class="popup__title">
+            <input type="url" name="url" id="url" class="popup__title">
+          </div>
+          <button type="submit" aria-labelledby="Сохранить" class="popup__save-button popup__save-button_type_add">Сохранить</button>
+        </form>
+      </div>
+    </div>
   </div>
+  <script src="./pages/index.js"></script>
 </body>
 </html>
