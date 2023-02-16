@@ -14,7 +14,7 @@ const closePopup = (popup) => {
 };
 
 openEditPopup.addEventListener('click', () => {
- openPopup(popup);
+  openPopup(popup);
 });
 
 openAddPopup.addEventListener('click', () => {
@@ -62,7 +62,7 @@ const template = document.querySelector('.grid-item').content.querySelector('.gr
 const templates = document.querySelector('.photo-grid');
 const addTemplate = document.querySelector('.popup__save-button_type_add');
 
-const createItem = (data) => {
+/* const createItem = (data) => {
   const item = template.cloneNode(true);
   item.querySelector('.grid-item__text').textContent = data.name;
   item.querySelector('.grid-item__image').textContent = data.link;
@@ -77,12 +77,16 @@ const deleteItem = (event) => {
 
 const renderItem = (data) => {
   templates.prepend(createItem(data));
-};
+}; */
 
-initialCards.forEach((data) => {
-  renderItem(data);
-});
+const profileTitle = document.querySelector('.profile__title').textContent;
+console.log(profileTitle);
 
-for (let i = initialCards.length - 1; i >= 0; i--) {
-  renderItem(initialCards[i]);
+const namePlaceholder = popup.querySelector('.popup__title').placeholder;
+console.log(namePlaceholder);
+
+const changePlaceholder = () => {
+  namePlaceholder = "жак жак жак";
+  return namePlaceholder;
 }
+console.log(namePlaceholder);
