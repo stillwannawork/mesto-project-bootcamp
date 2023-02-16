@@ -56,16 +56,14 @@ const initialCards = [
   }
 ]; 
 
-
-
 const template = document.querySelector('.grid-item').content.querySelector('.grid-item');
 const templates = document.querySelector('.photo-grid');
 const addTemplate = document.querySelector('.popup__save-button_type_add');
 
-/* const createItem = (data) => {
+const createItem = (initialCards) => {
   const item = template.cloneNode(true);
-  item.querySelector('.grid-item__text').textContent = data.name;
-  item.querySelector('.grid-item__image').textContent = data.link;
+  item.querySelector('.grid-item__text').textContent = initialCards.name;
+  item.querySelector('.grid-item__image').textContent = initialCards.link;
   item.querySelector('.grid-item__delete-icon').addEventListener('click', deleteItem);
 
   return item;
@@ -77,9 +75,9 @@ const deleteItem = (event) => {
 
 const renderItem = (data) => {
   templates.prepend(createItem(data));
-}; */
+};
 
-const profileTitle = document.querySelector('.profile__title').textContent;
+/* const profileTitle = document.querySelector('.profile__title').textContent;
 console.log(profileTitle);
 
 const namePlaceholder = popup.querySelector('.popup__title').placeholder;
@@ -89,4 +87,5 @@ const changePlaceholder = () => {
   namePlaceholder = "жак жак жак";
   return namePlaceholder;
 }
-console.log(namePlaceholder);
+console.log(namePlaceholder); */
+
