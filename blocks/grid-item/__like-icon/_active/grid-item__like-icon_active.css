@@ -1,0 +1,5 @@
+.grid-item__like-icon_active {
+  color: black;
+  background-image: url(../../../../images/heart-black.svg);
+  opacity: 1;
+}
