@@ -11,15 +11,15 @@ const editPopupFieldSubtitle = popupEdit.querySelector('.popup__field_type_subti
 const addPopupFieldTitle = popupAdd.querySelector('.popup__field_type_title');
 const addPopupFieldSubtitle = popupAdd.querySelector('.popup__field_type_url');
 const buttonSaveEditPopup = popupEdit.querySelector('.popup__save-button_type_edit');
-const formEditPopup = popupEdit.querySelector('.popup__form_type_edit');
-const formAddPopup = popupAdd.querySelector('.popup__form_type_add');
+const formEditPopup = document.forms['edit-profile'];
+const formAddPopup = document.forms['add-grid-item'];
 const gridItemTemplate = document.querySelector('#card-template').content.querySelector('.grid-item');
 const gridContainer = document.querySelector('.photo-grid');
 const popupImage = document.querySelector('.popup_type_image');
 const popupImageImage = popupImage.querySelector('.popup__image');
 const popupImageCaption = popupImage.querySelector('.popup__caption');
 const buttonCloseImagePopup = popupImage.querySelector('.popup__close-button');
-
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
@@ -32,25 +32,16 @@ const closePopup = (popup) => {
 buttonOpenEditPopup.addEventListener('click', () => {
   editPopupFieldTitle.value = profileTitle.textContent;
   editPopupFieldSubtitle.value = profileSubtitle.textContent;
- openPopup(popupEdit);
+  openPopup(popupEdit);
 });
 
 buttonOpenAddPopup.addEventListener('click', () => {
   openPopup(popupAdd);
-  addPopupFieldTitle.value = '';
-  addPopupFieldSubtitle.value = '';
 });
 
-buttonCloseEditPopup.addEventListener('click', () => {
-  closePopup(popupEdit);
-});
-
-buttonCloseAddPopup.addEventListener('click', () => {
-  closePopup(popupAdd);
-});
-
-buttonCloseImagePopup.addEventListener('click', () => {
-  closePopup(popupImage);
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 const handleSubmitEditForm = (evt) => {
@@ -58,7 +49,7 @@ const handleSubmitEditForm = (evt) => {
   profileTitle.textContent = editPopupFieldTitle.value;
   profileSubtitle.textContent = editPopupFieldSubtitle.value;
   closePopup(popupEdit);
-}
+};
 
 formEditPopup.addEventListener('submit', handleSubmitEditForm);
 
@@ -67,6 +58,7 @@ const handleSubmitAddForm = (evt) => {
   const name = addPopupFieldTitle.value;
   const link = addPopupFieldSubtitle.value;
   renderCard({name, link});
+  evt.target.reset();
   closePopup(popupAdd);
 };
 
@@ -80,10 +72,10 @@ const createCard = (data) => {
   card.querySelector('.grid-item__text').textContent = data.name;
   const image = card.querySelector('.grid-item__image');
   image.src = data.link;
-  image.alt = 'Изображение';
+  image.alt = `Изображение ${data.name}`;
   image.addEventListener('click', () => {
     popupImageImage.src = data.link;
-    popupImageImage.alt = 'Изображение ${data.name}';
+    popupImageImage.alt = `Изображение ${data.name}`;
     popupImageCaption.textContent = data.name;
     openPopup(popupImage);
   });
