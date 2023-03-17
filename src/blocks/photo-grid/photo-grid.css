@@ -6,8 +6,8 @@
   display: grid;
   row-gap: 20px;
   column-gap: 17px;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(1, auto);
+  grid-template-columns: repeat(3, 282px);
 }
 
 @media screen and (max-width: 920px) {

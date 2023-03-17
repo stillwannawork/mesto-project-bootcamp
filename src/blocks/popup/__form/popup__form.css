@@ -4,7 +4,7 @@
   padding-top: 54px;
   margin: 0 auto;
   width: 358px;
-  row-gap: 48px;
+  row-gap: 18px;
   box-sizing: border-box;
 }
 
@@ -12,6 +12,6 @@
   .popup__form {
     width: 238px;
     padding-top: 75px;
-    row-gap: 45px;
+    row-gap: 15px;
   }
 }
