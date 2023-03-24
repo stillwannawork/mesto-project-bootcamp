@@ -2,17 +2,17 @@ const popupsList = document.querySelectorAll('.popup');
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEscKeyHandler);
+  document.addEventListener('keydown', handleEscape);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEscKeyHandler);
+  document.removeEventListener('keydown', handleEscape);
 };
 
-const closePopupEscKeyHandler = (evt) => {
-  const popup = document.querySelector('.popup_opened');
+const handleEscape = (evt) => {
   if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   }
 };
