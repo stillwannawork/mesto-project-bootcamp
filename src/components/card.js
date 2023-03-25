@@ -6,7 +6,6 @@ const popupLargeImage = document.querySelector('.popup_type_image');
 const imageElement = popupLargeImage.querySelector('.popup__image');
 const captionElement = popupLargeImage.querySelector('.popup__caption');
 const popupDeleteCard = document.querySelector('.popup_type_delete');
-const buttonSubmitDeleteCard = popupDeleteCard.querySelector('.popup__save-button');
 
 const cardObjectForDelete = {
   cardId: '',
@@ -15,7 +14,7 @@ const cardObjectForDelete = {
 
 const handleDeleteCard = () => {
   deleteCard(cardObjectForDelete.cardId) 
-  .then(() => {
+  .then(res => {
     cardObjectForDelete.card.remove()
     closePopup(popupDeleteCard)
   })
