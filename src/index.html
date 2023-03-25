@@ -78,15 +78,22 @@
         </form>
       </div>
     </div>
-    <div class="popup popup_type_image">
-        <figure class="popup__figure">
-          <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
-          <img src="" alt="" class="popup__image">
-          <figurecaption class="popup__caption"></figurecaption>
-        </figure>
+    <div class="popup popup_type_delete">
+      <div class="popup__container popup__container_type_delete">
+        <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+        <h3 class="popup__header">Вы уверены?</h3>
+        <form action="#" method="get" name="delete_card" class="popup__form popup__form_type_delete" novalidate>
+          <button type="submit" aria-labelledby="Да" class="popup__save-button popup__save-button_type_delete">Дa</button>
+        </form>
       </div>
     </div>
-    
+    <div class="popup popup_type_image">
+      <figure class="popup__figure">
+        <button type="button" aria-label="Закрыть" class="popup__close-button"></button>
+        <img src="" alt="" class="popup__image">
+        <figurecaption class="popup__caption"></figurecaption>
+      </figure>
+    </div>
     <template id="card-template">
       <li class="grid-item">
         <button type="button" aria-label="Удалить" class="grid-item__delete-icon"></button>

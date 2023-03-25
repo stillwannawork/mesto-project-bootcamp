@@ -1,95 +1,104 @@
 import './pages/index.css';
 import {enableValidation} from './components/validate.js';
 import {openPopup as handleOpenPopup, closePopup} from './components/modal.js';
-import {createCard, popupImage, popupImageImage} from './components/card.js';
+import {createCard, popupLargeImage, imageElement} from './components/card.js';
 import {getUserInfo, getInitialCards, patchProfileInfo, patchProfileImage, addCard} from './components/api.js';
 
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
 const popupEditProfileImage = document.querySelector('.popup_type_edit-avatar');
-const buttonOpenEditPopup = document.querySelector('.profile__edit-button');
-const buttonOpenAddPopup = document.querySelector('.profile__add-button');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-const editPopupFieldTitle = popupEdit.querySelector('.popup__field_type_name');
-const editPopupFieldSubtitle = popupEdit.querySelector('.popup__field_type_subtitle');
-const addPopupFieldTitle = popupAdd.querySelector('.popup__field_type_title');
-const addPopupFieldSubtitle = popupAdd.querySelector('.popup__field_type_url');
-const fieldLinkProfileImage = popupEditProfileImage.querySelector('.popup__field_type_url-avatar');
-const formEditPopup = document.forms.edit_profile;
-const formAddPopup = document.forms.add_card;
+const popupEditProfileInfo = document.querySelector('.popup_type_edit');
+const popupAddCard = document.querySelector('.popup_type_add');
+const buttonOpenPopupEditProfileImage = document.querySelector('.profile__avatar-button');
+const buttonOpenPopupEditProfileInfo = document.querySelector('.profile__edit-button');
+const buttonOpenPopupAddCard = document.querySelector('.profile__add-button');
+const imageProfile = document.querySelector('.profile__avatar');
+const titleProfile = document.querySelector('.profile__title');
+const subtitleProfile = document.querySelector('.profile__subtitle');
 const formEditProfileImage = document.forms.edit_avatar;
+const formEditProfileInfo = document.forms.edit_profile;
+const formAddCard = document.forms.add_card;
+const fieldTitleFormEditProfileInfo = formEditProfileInfo.querySelector('.popup__field_type_name');
+const fieldSubtitleFormEditProfileInfo = formEditProfileInfo.querySelector('.popup__field_type_subtitle');
+const fieldTitleFormAddCard = formAddCard.querySelector('.popup__field_type_title');
+const fieldSubtitleFormAddCard = formAddCard.querySelector('.popup__field_type_url');
+const fieldLinkProfileImage = popupEditProfileImage.querySelector('.popup__field_type_url-avatar');
 const gridContainer = document.querySelector('.photo-grid');
-const closeButtons = document.querySelectorAll('.popup__close-button');
-const buttonSubmitAddPopup = popupAdd.querySelector('.popup__save-button');
-const buttonSubmitEditProfileImage =popupEditProfileImage.querySelector('.popup__save-button');
-const buttonEditProfileImage = document.querySelector('.profile__avatar-button');
-const profileImage = document.querySelector('.profile__avatar');
+const buttonsListClosePopup = document.querySelectorAll('.popup__close-button');
+const buttonSubmitAddCardForm = formAddCard.querySelector('.popup__save-button');
+const buttonSubmitEditProfileImageForm = formEditProfileImage.querySelector('.popup__save-button');
 
-buttonOpenEditPopup.addEventListener('click', () => {
-  editPopupFieldTitle.value = profileTitle.textContent;
-  editPopupFieldSubtitle.value = profileSubtitle.textContent;
-  handleOpenPopup(popupEdit);
+buttonOpenPopupEditProfileInfo.addEventListener('click', () => {
+  fieldTitleFormEditProfileInfo.value = titleProfile.textContent;
+  fieldSubtitleFormEditProfileInfo.value = subtitleProfile.textContent;
+  handleOpenPopup(popupEditProfileInfo);
 });
 
-buttonOpenAddPopup.addEventListener('click', () => {
-  handleOpenPopup(popupAdd);
-  buttonSubmitAddPopup.disabled = true;
-  buttonSubmitAddPopup.classList.add('popup__save-button_status_disabled');
+buttonOpenPopupAddCard.addEventListener('click', () => {
+  handleOpenPopup(popupAddCard);
+  buttonSubmitAddCardForm.disabled = true;
+  buttonSubmitAddCardForm.classList.add('popup__save-button_status_disabled');
 });
 
-buttonEditProfileImage.addEventListener('click', () => {
+buttonOpenPopupEditProfileImage.addEventListener('click', () => {
   handleOpenPopup(popupEditProfileImage);
-  buttonSubmitEditProfileImage.disabled = true;
-  buttonSubmitEditProfileImage.classList.add('popup__save-button_status_disabled');
-})
+  buttonSubmitEditProfileImageForm.disabled = true;
+  buttonSubmitEditProfileImageForm.classList.add('popup__save-button_status_disabled');
+});
+// Я не понимаю как использовать функцию из валидатора для управления кнопкой
 
-popupImageImage.addEventListener('click', () => {
-  handleOpenPopup(popupImage);
+imageElement.addEventListener('click', () => {
+  handleOpenPopup(popupLargeImage);
 });
 
-closeButtons.forEach((button) => {
+buttonsListClosePopup.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
-const handleSubmitProfileImageForm = (evt) => {
+const handleSubmitEditProfileImageForm = (evt) => {
   evt.preventDefault();
   patchProfileImage(fieldLinkProfileImage.value)
   .then(evt.submitter.textContent = 'Сохранение...')
   .then((res) => {
-    profileImage.src = res.avatar;
+    imageProfile.src = res.avatar;
+    closePopup(popupEditProfileImage);
+    evt.target.reset();
   })
-  .finally(() => {closePopup(popupEditProfileImage), evt.submitter.textContent = 'Сохранить', evt.target.reset();})
+  .catch(rej => console.log(`Ошибка ${rej}`))
+  .finally(() => {evt.submitter.textContent = 'Сохранить'})
 };
 
-formEditProfileImage.addEventListener('submit', handleSubmitProfileImageForm);
+formEditProfileImage.addEventListener('submit', handleSubmitEditProfileImageForm);
 
-const handleSubmitEditForm = (evt) => {
+const handleSubmitEditProfileInfoForm = (evt) => {
   evt.preventDefault();
-  patchProfileInfo(editPopupFieldTitle.value, editPopupFieldSubtitle.value)
+  patchProfileInfo(fieldTitleFormEditProfileInfo.value, fieldSubtitleFormEditProfileInfo.value)
   .then(evt.submitter.textContent = 'Сохранение...')
   .then((res) => {
-    profileTitle.textContent = res.name;
-    profileSubtitle.textContent = res.about;
+    titleProfile.textContent = res.name;
+    subtitleProfile.textContent = res.about;
+    closePopup(popupEditProfileInfo)
   })
-  .finally(() => {closePopup(popupEdit), evt.submitter.textContent = 'Сохранить'})
+  .catch(rej => console.log(`Ошибка ${rej}`))
+  .finally(() => {evt.submitter.textContent = 'Сохранить'})
 };
 
-formEditPopup.addEventListener('submit', handleSubmitEditForm);
+formEditProfileInfo.addEventListener('submit', handleSubmitEditProfileInfoForm);
 
 const handleSubmitAddForm = (evt) => {
   evt.preventDefault();
-  addCard(addPopupFieldTitle.value, addPopupFieldSubtitle.value)
+  addCard(fieldTitleFormAddCard.value, fieldSubtitleFormAddCard.value)
   .then(evt.submitter.textContent = 'Создание...')
   .then(res => {
-    const newCard = createCard(res, res.owner._id, handleOpenPopup)
-    renderCard(newCard)
+    const newCard = createCard(res, res.owner._id, handleOpenPopup);
+    renderCard(newCard);
+    closePopup(popupAddCard);
+    evt.target.reset();
   })
-  .finally(() => {closePopup(popupAdd), evt.submitter.textContent = 'Создать', evt.target.reset()})
+  .catch(rej => console.log(`Ошибка ${rej}`))
+  .finally(() => {evt.submitter.textContent = 'Создать'})
 };
 
-formAddPopup.addEventListener('submit', handleSubmitAddForm);
+formAddCard.addEventListener('submit', handleSubmitAddForm);
 
 const renderCard = (data) => {
   const card = data;
@@ -106,12 +115,13 @@ enableValidation({
 
 Promise.all([getUserInfo(), getInitialCards()])
 .then (([userInfo, cards]) => {
-  profileTitle.textContent = userInfo.name;
-  profileSubtitle.textContent  = userInfo.about;
-  profileImage.src = userInfo.avatar;
-  profileImage.alt = `Фото ${userInfo.name}`;
+  titleProfile.textContent = userInfo.name;
+  subtitleProfile.textContent  = userInfo.about;
+  imageProfile.src = userInfo.avatar;
+  imageProfile.alt = `Фото ${userInfo.name}`;
   cards.reverse().forEach((card) => {
     const newCard = createCard(card, userInfo._id, handleOpenPopup)
     renderCard(newCard)
   })
 })
+.catch(rej => console.log(`Ошибка ${rej}`))

@@ -1,9 +1,28 @@
 import {deleteCard, addLike, removeLike} from './api.js';
+import { closePopup } from './modal.js';
 
 const gridItemTemplate = document.querySelector('#card-template').content.querySelector('.grid-item');
-const popupImage = document.querySelector('.popup_type_image');
-const popupImageImage = popupImage.querySelector('.popup__image');
-const popupImageCaption = popupImage.querySelector('.popup__caption');
+const popupLargeImage = document.querySelector('.popup_type_image');
+const imageElement = popupLargeImage.querySelector('.popup__image');
+const captionElement = popupLargeImage.querySelector('.popup__caption');
+const popupDeleteCard = document.querySelector('.popup_type_delete');
+const buttonSubmitDeleteCard = popupDeleteCard.querySelector('.popup__save-button');
+
+const cardObjectForDelete = {
+  cardId: '',
+  card: null,
+}
+
+const handleDeleteCard = () => {
+  deleteCard(cardObjectForDelete.cardId) 
+  .then(() => {
+    cardObjectForDelete.card.remove()
+    closePopup(popupDeleteCard)
+  })
+  .catch(rej => console.log(`Ошибка ${rej}`))
+}
+
+document.forms.delete_card.addEventListener('click', handleDeleteCard)
 
 
 const createCard = (data, userId, onOpenPopup) => {
@@ -19,17 +38,23 @@ const createCard = (data, userId, onOpenPopup) => {
   image.src = data.link;
   image.alt = `Изображение ${data.name}`;
   image.addEventListener('click', () => {
-    popupImageImage.src = data.link;
-    popupImageImage.alt = `Изображение ${data.name}`;
-    popupImageCaption.textContent = data.name;
-    onOpenPopup(popupImage);
+    imageElement.src = data.link;
+    imageElement.alt = `Изображение ${data.name}`;
+    captionElement.textContent = data.name;
+    onOpenPopup(popupLargeImage);
   });
   
   if (card.id != userId) {
     buttonDelete.remove();
   }
-  buttonDelete.addEventListener('click', () => handleDeleteCard(data._id, card));
+
+  buttonDelete.addEventListener('click', () => {
+    cardObjectForDelete.cardId = data._id;
+    cardObjectForDelete.card = card;
+    onOpenPopup(popupDeleteCard);
+  });
   
+
   const isLiked = (array) => {
     array.forEach((likeElement) => {
     if (likeElement._id === userId) {
@@ -47,12 +72,14 @@ const createCard = (data, userId, onOpenPopup) => {
         buttonLike.classList.remove('grid-item__like-icon_active');
         likeCounter.textContent = res.likes.length
       })
+      .catch(rej => console.log(`Ошибка ${rej}`))
     } else {
       addLike(cardId)
       .then(res => {
         buttonLike.classList.add('grid-item__like-icon_active'); 
         likeCounter.textContent = res.likes.length
       })
+      .catch(rej => console.log(`Ошибка ${rej}`))
     }
   };
 
@@ -61,9 +88,4 @@ const createCard = (data, userId, onOpenPopup) => {
   return card;
 };
 
-const handleDeleteCard = (cardId, card) => {
-  deleteCard(cardId)
-  .then(res => {card.remove()})
-};
-
-export {createCard, popupImage, popupImageImage}
+export {createCard, popupLargeImage, imageElement}

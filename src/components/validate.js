@@ -72,4 +72,4 @@ enableValidation({
   inputErrorClass: 'popup__field_type_error',
 }); 
 
-export {enableValidation}
+export {enableValidation, disableSubmitButton}
