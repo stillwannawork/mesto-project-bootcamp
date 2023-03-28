@@ -64,12 +64,12 @@ const enableValidation = (settings) => {
   });
 };
 
-enableValidation({
+/* enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__save-button',
   inactiveButtonClass: 'popup__save-button_status_disabled',
   inputErrorClass: 'popup__field_type_error',
-}); 
+});  */
 
 export {enableValidation, disableSubmitButton}

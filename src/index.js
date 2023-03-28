@@ -1,8 +1,16 @@
 import './pages/index.css';
-import {enableValidation} from './components/validate.js';
+import {enableValidation, disableSubmitButton} from './components/validate.js';
 import {openPopup as handleOpenPopup, closePopup} from './components/modal.js';
 import {createCard, popupLargeImage, imageElement} from './components/card.js';
 import {getUserInfo, getInitialCards, patchProfileInfo, patchProfileImage, addCard} from './components/api.js';
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_status_disabled',
+  inputErrorClass: 'popup__field_type_error',
+};
 
 const popupEditProfileImage = document.querySelector('.popup_type_edit-avatar');
 const popupEditProfileInfo = document.querySelector('.popup_type_edit');
@@ -34,14 +42,12 @@ buttonOpenPopupEditProfileInfo.addEventListener('click', () => {
 
 buttonOpenPopupAddCard.addEventListener('click', () => {
   handleOpenPopup(popupAddCard);
-  buttonSubmitAddCardForm.disabled = true;
-  buttonSubmitAddCardForm.classList.add('popup__save-button_status_disabled');
+  disableSubmitButton(buttonSubmitAddCardForm, validationConfig);
 });
 
 buttonOpenPopupEditProfileImage.addEventListener('click', () => {
   handleOpenPopup(popupEditProfileImage);
-  buttonSubmitEditProfileImageForm.disabled = true;
-  buttonSubmitEditProfileImageForm.classList.add('popup__save-button_status_disabled');
+  disableSubmitButton(buttonSubmitEditProfileImageForm, validationConfig);
 });
 // Я не понимаю как использовать функцию из валидатора для управления кнопкой
 
@@ -105,13 +111,7 @@ const renderCard = (data) => {
   gridContainer.prepend(card);
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_status_disabled',
-  inputErrorClass: 'popup__field_type_error',
-}); 
+enableValidation(validationConfig); 
 
 Promise.all([getUserInfo(), getInitialCards()])
 .then (([userInfo, cards]) => {
